@@ -1,1 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ORIENT LUXE | Exclusive Asian Gateways</title>
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* RESET & CORE STYLES */
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f4f9fc;
+      color: #1e3545;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .brand-logo {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* NAVIGATION BAR */
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .brand-logo {
+      font-size: 32px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    .brand-logo span {
+      color: #00a8e8;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 35px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00a8e8;
+    }
+
+    /* AESTHETIC LANGUAGE SWITCHER */
+    .lang-switcher {
+      display: flex;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 4px;
+      border-radius: 30px;
+      gap: 5px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: 0.3s;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .lang-btn.active {
+      background: #00a8e8;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0, 168, 232, 0.3);
+    }
+
+    .cta-nav-btn {
+      background: #00a8e8;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 168, 232, 0.4);
+      font-size: 14px;
+    }
+
+    .cta-nav-btn:hover {
+      background: white;
+      color: #003459;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 52, 89, 0.55), rgba(0, 52, 89, 0.25)), 
+                  url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      color: white;
+    }
+
+    .hero-tagline {
+      font-size: 15px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #00a8e8;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 70px;
+      line-height: 1.1;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 19px;
+      font-weight: 300;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+      line-height: 1.6;
+    }
+
+    .hero-btn {
+      background: white;
+      color: #003459;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: 0.4s;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .hero-btn:hover {
+      background: #00a8e8;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* LIVE CITY TIMES */
+    .live-clocks {
+      background: #003459;
+      color: white;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 14px;
+      border-bottom: 4px solid #00a8e8;
+    }
+
+    .clock-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .clock-item span.city {
+      font-weight: 600;
+      color: #00a8e8;
+    }
+
+    /* EXCLUSIVE PERKS SECTION */
+    .perks-section {
+      padding: 100px 8%;
+      background: white;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      letter-spacing: 4px;
+      color: #00a8e8;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 45px;
+      color: #003459;
+      margin-bottom: 60px;
+    }
+
+    .perks-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 35px;
+    }
+
+    .perk-card {
+      padding: 45px 35px;
+      background: #f4f9fc;
+      border-radius: 25px;
+      border-bottom: 3px solid transparent;
+      transition: 0.3s;
+    }
+
+    .perk-card:hover {
+      transform: translateY(-5px);
+      border-color: #00a8e8;
+      background: white;
+      box-shadow: 0 15px 35px rgba(0,52,89,0.05);
+    }
+
+    .perk-icon {
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    .perk-card h3 {
+      font-size: 21px;
+      color: #003459;
+      margin-bottom: 15px;
+    }
+
+    .perk-card p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #617d94;
+    }
+
+    /* CURATED DESTINATIONS */
+    .destinations {
+      padding: 100px 8%;
+      background: #e1f5fe;
+    }
+
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+    }
+
+    .dest-card {
+      background: white;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 52, 89, 0.06);
+      transition: 0.4s;
+    }
+
+    .dest-card:hover {
+      transform: scale(1.02);
+    }
+
+    .dest-img-container {
+      position: relative;
+      height: 380px;
+    }
+
+    .dest-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .luxury-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(0, 52, 89, 0.85);
+      backdrop-filter: blur(5px);
+      color: #d4af37;
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      border: 1px solid #d4af37;
+    }
+
+    .dest-info {
+      padding: 30px;
+    }
+
+    .dest-meta {
+      font-size: 13px;
+      color: #00a8e8;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .dest-info h3 {
+      font-size: 28px;
+      color: #003459;
+      margin-bottom: 15px;
+    }
+
+    .dest-info p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #556e80;
+      margin-bottom: 25px;
+    }
+
+    .dest-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #e1f5fe;
+      padding-top: 20px;
+    }
+
+    .price-box label {
+      font-size: 11px;
+      color: #8fa0ae;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: 700;
+      color: #003459;
+    }
+
+    .price span {
+      color: #00a8e8;
+    }
+
+    .book-mini-btn {
+      background: #00a8e8;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .book-mini-btn:hover {
+      background: #003459;
+    }
+
+    /* CONCIERGE PLANNER */
+    .planner-section {
+      padding: 100px 8%;
+      background: white;
+    }
+
+    .planner-box {
+      background: linear-gradient(135deg, #003459 0%, #001726 100%);
+      border-radius: 30px;
+      padding: 60px;
+      color: white;
+      box-shadow: 0 20px 50px rgba(0,52,89,0.3);
+    }
+
+    .planner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      margin-top: 35px;
+    }
+
+    .planner-field {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .planner-field label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #00a8e8;
+      font-weight: 600;
+    }
+
+    .planner-field select {
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      color: white;
+      font-size: 15px;
+      outline: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .planner-field select option {
+      background: #003459;
+      color: white;
+    }
+
+    .plan-btn {
+      background: #00a8e8;
+      border: none;
+      color: white;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: 0.3s;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .plan-btn:hover {
+      background: white;
+      color: #003459;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #001726;
+      color: #8fa0ae;
+      padding: 60px 8% 30px;
+      text-align: center;
+      border-top: 5px solid #00a8e8;
+    }
+
+    .footer-logo {
+      font-size: 28px;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo span {
+      color: #00a8e8;
+    }
+
+    .copyright {
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 30px;
+    }
+
+    @media (max-width: 900px) {
+      header { padding: 20px 5%; }
+      nav, .cta-nav-btn { display: none; }
+      .hero h1 { font-size: 42px; }
+      .planner-box { padding: 35px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <a href="#" class="brand-logo">ORIENT<span>LUXE.</span></a>
+    <div class="nav-right">
+      <nav>
+        <ul>
+          <li><a href="#destinations" id="nav-dest">Destinations</a></li>
+          <li><a href="#perks" id="nav-perks">Our Perks</a></li>
+          <li><a href="#concierge" id="nav-conc">Concierge</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Aesthetic Toggle Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="setLanguage('am')">ՀԱՅ</button>
+      </div>
+
+      <a href="#concierge" class="cta-nav-btn" id="nav-btn">Inquire Now</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-tagline" id="hero-tag">The Art of Luxury Asian Travel</p>
+      <h1 id="hero-title">Unveil the Secrets of the Far East</h1>
+      <p id="hero-desc">Handcrafted luxury itineraries across Asia's most spectacular cities and secluded island paradises. Experience elite private tours, five-star villas, and tailored cultural immersion.</p>
+      <a href="#destinations" class="hero-btn" id="hero-action">Explore Collections</a>
+    </div>
+  </section>
+
+  <!-- LIVE WATCHER PANEL -->
+  <div class="live-clocks">
+    <div class="clock-item">📍 <span class="city" id="c1">Kyoto:</span> <span id="kyoto-time">00:00 AM</span></div>
+    <div class="clock-item">📍 <span class="city" id="c2">Bali:</span> <span id="bali-time">00:00 AM</span></div>
+    <div class="clock-item">📍 <span class="city" id="c3">Seoul:</span> <span id="seoul-time">00:00 AM</span></div>
+    <div class="clock-item">📍 <span class="city" id="c4">Singapore:</span> <span id="singapore-time">00:00 AM</span></div>
+  </div>
+
+  <!-- EXCLUSIVE PERKS -->
+  <section class="perks-section" id="perks">
+    <p class="section-subtitle" id="perks-sub">The Orient Luxe Standard</p>
+    <h2 class="section-title" id="perks-title">Wholly Exclusive Services</h2>
+    <div class="perks-container">
+      <div class="perk-card">
+        <div class="perk-icon">🛩️</div>
+        <h3 id="p1-t">Private Aviation</h3>
+        <p id="p1-d">Chartered internal flights and effortless VIP fast-track airport customs arrangements at all major Asian hubs.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">⛩️</div>
+        <h3 id="p2-t">Elite Access</h3>
+        <p id="p2-d">Private, after-hours temple visits in Kyoto and exclusive culinary table arrangements at Michelin-starred spots.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">🛎️</div>
+        <h3 id="p3-t">24/7 Local Concierge</h3>
+        <p id="p3-d">A dedicated, multilingual local host available around the clock to manage itinerary changes in real time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASIAN DESTINATIONS -->
+  <section class="destinations" id="destinations">
+    <div style="text-align: center;">
+      <p class="section-subtitle" id="dest-sub">Curated Portfolios</p>
+      <h2 class="section-title" id="dest-title">Iconic Cities & Sanctuaries</h2>
+    </div>
+
+    <div class="destinations-grid">
+      <!-- DESTINATION 1: KYOTO -->
+      <div class="dest-card">
+        <div class="dest-img-container">
+          <span class="luxury-badge" id="b1">★ Top Cultural Hideaway</span>
+          <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80" alt="Kyoto">
+        </div>
+        <div class="dest-info">
+          <div class="dest-meta" id="m1">Japan • Cultural Masterpiece</div>
+          <h3>Kyoto & Arashiyama</h3>
+          <p id="d1-p">Walk beneath golden maple leaves, stay inside an ultra-luxury traditional Ryokan, and experience authentic private tea ceremonies hosted by Master Geishas.</p>
+          <div class="dest-bottom">
+            <div class="price-box">
+              <label class="pkg-lbl">Bespoke Packages From</label>
+              <div class="price">$4,200<span class="pp">/pp</span></div>
+            </div>
+            <a href="#concierge" class="book-mini-btn btn-inq">Inquire</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESTINATION 2: BALI -->
+      <div class="dest-card">
+        <div class="dest-img-container">
+          <span class="luxury-badge" id="b2">★ Ultimate Wellness</span>
+          <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80" alt="Bali">
+        </div>
+        <div class="dest-info">
+          <div class="dest-meta" id="m2">Indonesia • Tropical Sanctuary</div>
+          <h3>Ubud Luxury Villas</h3>
+          <p id="d2-p">Unwind in infinity-pool villas hanging directly over emerald rice terraces. Features private yacht cruises around Nusa Penida and bespoke spiritual healing sessions.</p>
+          <div class="dest-bottom">
+            <div class="price-box">
+              <label class="pkg-lbl">Bespoke Packages From</label>
+              <div class="price">$3,800<span class="pp">/pp</span></div>
+            </div>
+            <a href="#concierge" class="book-mini-btn btn-inq">Inquire</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESTINATION 3: SEOUL -->
+      <div class="dest-card">
+        <div class="dest-img-container">
+          <span class="luxury-badge" id="b3">★ Modern Opulence</span>
+          <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80" alt="Seoul">
+        </div>
+        <div class="dest-info">
+          <div class="dest-meta" id="m3">South Korea • Neon & Heritage</div>
+          <h3>Seoul Legacy & Style</h3>
+          <p id="d3-p">Explore the stunning intersection of futuristic Hanok design and palace historical luxury. Includes curated private art styling tours and premium Hanwoo dining.</p>
+          <div class="dest-bottom">
+            <div class="price-box">
+              <label class="pkg-lbl">Bespoke Packages From</label>
+              <div class="price">$5,100<span class="pp">/pp</span></div>
+            </div>
+            <a href="#concierge" class="book-mini-btn btn-inq">Inquire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE PLANNER -->
+  <section class="planner-section" id="concierge">
+    <div class="planner-box">
+      <p class="section-subtitle" style="color: #00a8e8;" id="plan-sub">Digital Concierge</p>
+      <h2 style="font-size: 38px; margin-bottom: 15px;" id="plan-title">Tailor Your Journey</h2>
+      <p style="color: #a4c2d7; font-weight: 300; font-size: 15px;" id="plan-desc">Select your parameters below, and our bespoke planning algorithm will assign your personal travel architect.</p>
+      
+      <div class="planner-grid">
+        <div class="planner-field">
+          <label id="f1-lbl">Target Sanctuary</label>
+          <select id="destination-select">
+            <option value="Kyoto">Kyoto, Japan</option>
+            <option value="Bali">Ubud Sanctuary, Bali</option>
+            <option value="Seoul">Seoul High-Line, Korea</option>
+          </select>
+        </div>
+        <div class="planner-field">
+          <label id="f2-lbl">Travel Preference</label>
+          <select id="pref-select">
+            <option id="o1">Wellness & Healing</option>
+            <option id="o2">Heritage & Deep History</option>
+            <option id="o3">Modern Luxury & Gastronomy</option>
+          </select>
+        </div>
+        <div class="planner-field">
+          <button class="plan-btn" id="plan-btn-text" onclick="triggerConciergeAlert()">Initiate Profile</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">ORIENT<span>LUXE.</span></div>
+    <p class="copyright" id="footer-copy">© 2026 Orient Luxe Travel Group. Handcrafted Luxury Portfolios.</p>
+  </footer>
+
+  <!-- MULTI-LANGUAGE DICTIONARY & CLOCKS SCRIPT -->
+  <script>
+    const translations = {
+      en: {
+        navDest: "Destinations", navPerks: "Our Perks", navConc: "Concierge", navBtn: "Inquire Now",
+        heroTag: "The Art of Luxury Asian Travel", heroTitle: "Unveil the Secrets of the Far East",
+        heroDesc: "Handcrafted luxury itineraries across Asia's most spectacular cities and secluded island paradises. Experience elite private tours, five-star villas, and tailored cultural immersion.",
+        heroAction: "Explore Collections",
+        c1: "Kyoto:", c2: "Bali:", c3: "Seoul:", c4: "Singapore:",
+        perksSub: "The Orient Luxe Standard", perksTitle: "Wholly Exclusive Services",
+        p1T: "Private Aviation", p1D: "Chartered internal flights and effortless VIP fast-track airport customs arrangements at all major Asian hubs.",
+        p2T: "Elite Access", p2D: "Private, after-hours temple visits in Kyoto and exclusive culinary table arrangements at Michelin-starred spots.",
+        p3T: "24/7 Local Concierge", p3D: "A dedicated, multilingual local host available around the clock to manage itinerary changes in real time.",
+        destSub: "Curated Portfolios", destTitle: "Iconic Cities & Sanctuaries",
+        b1: "★ Top Cultural Hideaway", m1: "Japan • Cultural Masterpiece", d1P: "Walk beneath golden maple leaves, stay inside an ultra-luxury traditional Ryokan, and experience authentic private tea ceremonies hosted by Master Geishas.",
+        b2: "★ Ultimate Wellness", m2: "Indonesia • Tropical Sanctuary", d2P: "Unwind in infinity-pool villas hanging directly over emerald rice terraces. Features private yacht cruises around Nusa Penida and bespoke spiritual healing sessions.",
+        b3: "★ Modern Opulence", m3: "South Korea • Neon & Heritage", d3P: "Explore the stunning intersection of futuristic Hanok design and palace historical luxury. Includes curated private art styling tours and premium Hanwoo dining.",
+        pkgLbl: "Bespoke Packages From", pp: "/pp", btnInq: "Inquire",
+        planSub: "Digital Concierge", planTitle: "Tailor Your Journey", planDesc: "Select your parameters below, and our bespoke planning algorithm will assign your personal travel architect.",
+        f1Lbl: "Target Sanctuary", f2Lbl: "Travel Preference", o1: "Wellness & Healing", o2: "Heritage & Deep History", o3: "Modern Luxury & Gastronomy",
+        planBtnText: "Initiate Profile", footerCopy: "© 2026 Orient Luxe Travel Group. Handcrafted Luxury Portfolios.",
+        alertMsg: "✨ Premium profile generated! Your private travel architect will contact you within 3 business hours via secure link. ♡"
+      },
+      am: {
+        navDest: "Ուղղություններ", navPerks: "Առավելությունները", navConc: "Կոնսիերժ", navBtn: "Հարցում ուղարկել",
+        heroTag: "Ասիական Շքեղ Ճանապարհորդության Արվեստը", heroTitle: "Բացահայտեք Հեռավոր Արևելքի Գաղտնիքները",
+        heroDesc: "Հատուկ մշակված շքեղ երթուղիներ Ասիայի ամենատպավորիչ քաղաքներում և մեկուսացված կղզիներում: Էլիտար մասնավոր տուրեր, հնգաստղանի վիլլաներ և անհատական մշակութային փորձառություններ:",
+        heroAction: "Բացահայտել Հավաքածուները",
+        c1: "Կիոտո:", c2: "Բալի:", c3: "Սեուլ:", c4: "Սինգապուր:",
+        perksSub: "Orient Luxe-ի Ստանդարտը", perksTitle: "Բացառապես Էլիտար Ծառայություններ",
+        p1T: "Մասնավոր Ավիացիա", p1D: "Չարտերային ներքին թռիչքներ և VIP արագացված մաքսային ձևակերպումներ Ասիայի բոլոր հիմնական օդանավակայաններում:",
+        p2T: "Էլիտար Հասանելիություն", p2D: "Մասնավոր այցելություններ Կիոտոյի տաճարներ փակման ժամերից հետո և սեղանների բացառիկ ամրագրումներ Միշլենյան աստղերով ռեստորաններում:",
+        p3T: "24/7 Տեղական Կոնսիերժ", p3D: "Հատուկ բազմալեզու տեղացի համակարգող, ով հասանելի է շուրջօրյա՝ երթուղու փոփոխությունները իրական ժամանակում կառավարելու համար:",
+        destSub: "Ընտրված Փաթեթներ", destTitle: "Սրբավայրեր և Պատմական Քաղաքներ",
+        b1: "★ Լավագույն Մշակութային Հանգիստ", m1: "Ճապոնիա • Մշակութային Գլուխգործոց", d1P: "Քայլեք ոսկեգույն թխկու տերևների ներքո, հանգրվանեք գերշքեղ ավանդական Ռյոկանում և մասնակցեք թեյի մասնավոր արարողությունների՝ Գեյշաների ուղեկցությամբ:",
+        b2: "★ Կատարյալ Վելնես", m2: "Ինդոնեզիա • Տրոպիկական Դրախտ", d2P: "Հանգստացեք անհատական լողավազաններով վիլլաներում, որոնք նայում են զմրուխտե բրնձի դաշտերին: Ներառում է զբոսանք մասնավոր զբոսանավով և հոգևոր թերապիա:",
+        b3: "★ Ժամանակակից Շքեղություն", m3: "Հարավային Կորեա • Նեոն և Ժառանգություն", d3P: "Բացահայտեք ֆուտուրիստական Հանոկ դիզայնի և պալատական պատմական շքեղության սինթեզը: Ներառում է արվեստի տուրեր և պրեմիում դասի Հանու ընթրիք:",
+        pkgLbl: "Անհատական Փաթեթներ Սկսած՝", pp: "/անձ", btnInq: "Հարցում",
+        planSub: "Թվային Կոնսիերժ", planTitle: "Պլանավորեք Ձեր Ճամփորդությունը", planDesc: "Ընտրեք Ձեր նախընտրությունները ստորև, և մեր համակարգը կնշանակի Ձեր անհատական ճարտարապետին:",
+        f1Lbl: "Նպատակակետ", f2Lbl: "Ճամփորդության Տեսակը", o1: "Վելնես և Վերականգնում", o2: "Պատմություն և Մշակույթ", o3: "Շքեղություն և Գաստրոնոմիա",
+        planBtnText: "Ստեղծել Պրոֆիլը", footerCopy: "© 2026 Orient Luxe Travel Group. Շքեղ Ճանապարհորդության Պորտֆոլիոներ:",
+        alertMsg: "✨ Պրեմիում պրոֆիլը հաջողությամբ ստեղծվեց: Ձեր անձնական տուր-ճարտարապետը կկապվի Ձեզ հետ 3 աշխատանքային ժամվա ընթացքում: ♡"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      
+      // Update Buttons Active State
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if(btn.innerText.toLowerCase() === lang || (btn.innerText === 'ՀԱՅ' && lang === 'am')) {
+          btn.classList.add('active');
+        }
+      });
+
+      // Map translations to DOM elements
+      document.getElementById('nav-dest').innerText = translations[lang].navDest;
+      document.getElementById('nav-perks').innerText = translations[lang].navPerks;
+      document.getElementById('nav-conc').innerText = translations[lang].navConc;
+      document.getElementById('nav-btn').innerText = translations[lang].navBtn;
+      document.getElementById('hero-tag').innerText = translations[lang].heroTag;
+      document.getElementById('hero-title').innerText = translations[lang].heroTitle;
+      document.getElementById('hero-desc').innerText = translations[lang].heroDesc;
+      document.getElementById('hero-action').innerText = translations[lang].heroAction;
+      
+      document.getElementById('c1').innerText = translations[lang].c1;
+      document.getElementById('c2').innerText = translations[lang].c2;
+      document.getElementById('c3').innerText = translations[lang].c3;
+      document.getElementById('c4').innerText = translations[lang].c4;
+
+      document.getElementById('perks-sub').innerText = translations[lang].perksSub;
+      document.getElementById('perks-title').innerText = translations[lang].perksTitle;
+      document.getElementById('p1-t').innerText = translations[lang].p1T;
+      document.getElementById('p1-d').innerText = translations[lang].p1D;
+      document.getElementById('p2-t').innerText = translations[lang].p2T;
+      document.getElementById('p2-d').innerText = translations[lang].p2D;
+      document.getElementById('p3-t').innerText = translations[lang].p3T;
+      document.getElementById('p3-d').innerText = translations[lang].p3D;
+
+      document.getElementById('dest-sub').innerText = translations[lang].destSub;
+      document.getElementById('dest-title').innerText = translations[lang].destTitle;
+      
+      document.getElementById('b1').innerText = translations[lang].b1;
+      document.getElementById('m1').innerText = translations[lang].m1;
+      document.getElementById('d1-p').innerText = translations[lang].d1P;
+      
+      document.getElementById('b2').innerText = translations[lang].b2;
+      document.getElementById('m2').innerText = translations[lang].m2;
+      document.getElementById('d2-p').innerText = translations[lang].d2P;
+      
+      document.getElementById('b3').innerText = translations[lang].b3;
+      document.getElementById('m3').innerText = translations[lang].m3;
+      document.getElementById('d3-p').innerText = translations[lang].d3P;
+
+      document.querySelectorAll('.pkg-lbl').forEach(el => el.innerText = translations[lang].pkgLbl);
+      document.querySelectorAll('.pp').forEach(el => el.innerText = translations[lang].pp);
+      document.querySelectorAll('.btn-inq').forEach(el => el.innerText = translations[lang].btnInq);
+
+      document.getElementById('plan-sub').innerText = translations[lang].planSub;
+      document.getElementById('plan-title').innerText = translations[lang].planTitle;
+      document.getElementById('plan-desc').innerText = translations[lang].planDesc;
+      document.getElementById('f1-lbl').innerText = translations[lang].f1Lbl;
+      document.getElementById('f2-lbl').innerText = translations[lang].f2Lbl;
+      document.getElementById('o1').innerText = translations[lang].o1;
+      document.getElementById('o2').innerText = translations[lang].o2;
+      document.getElementById('o3').innerText = translations[lang].o3;
+      document.getElementById('plan-btn-text').innerText = translations[lang].planBtnText;
+      
+      document.getElementById('footer-copy').innerText = translations[lang].footerCopy;
+    }
+
+    // LIVE TIMES ENGINE
+    function updateCityTimes() {
+      const options = { hour: '2-digit', minute: '2-digit', hour12: true };
+      const timeJapanKorea = new Date().toLocaleString("en-US", { timeZone: "Asia/Tokyo", ...options });
+      const timeBaliSingapore = new Date().toLocaleString("en-US", { timeZone: "Asia/Singapore", ...options });
+
+      document.getElementById('kyoto-time').innerHTML = timeJapanKorea;
+      document.getElementById('seoul-time').innerHTML = timeJapanKorea;
+      document.getElementById('bali-time').innerHTML = timeBaliSingapore;
+      document.getElementById('singapore-time').innerHTML = timeBaliSingapore;
+    }
+    setInterval(updateCityTimes, 1000);
+    updateCityTimes();
+
+    function triggerConciergeAlert() {
+      alert(translations[currentLang].alertMsg);
+    }
+  </script>
+</body>
+</html>
